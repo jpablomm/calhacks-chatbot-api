@@ -1,5 +1,11 @@
 const express = require("express");
 const cors = require("cors");
+
+// Add these lines at the top of your file
+const fetch = (...args) =>
+  import("node-fetch").then(({ default: fetch }) => fetch(...args));
+global.fetch = fetch;
+
 const { GoogleGenerativeAI } = require("@google/generative-ai");
 
 const app = express();
